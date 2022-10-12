@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  mssql:
+    container_name: mssql
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    volumes:
+      - ~/apps/mssql/data:/var/lib/mssqlql/data
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=mssql1Ipw
+
+  springboot-app:
+    container_name: bleep-spring-app
+    image: 'bleep-spring-app:latest'
+    build:
+      context: .
+    depends_on:
+      - mssql
+    ports:
+      - "8080:8080"
+    links:
+      - mssql
+    environment:
+      - spring.datasource.url=jdbc:sqlserver://mssql:1433;encrypt=true;trustServerCertificate=true;
+      - spring.datasource.username=sa
+      - spring.datasource.password=mssql1Ipw
+      - spring.jpa.hibernate.ddl-auto=update
+
+volumes:
+  cache:
+    driver: local
