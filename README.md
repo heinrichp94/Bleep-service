@@ -22,7 +22,7 @@ Modify the env variables to your liking in the `docker-compose.yml`.
 
 Then spin up a new container using `docker-compose`
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 ## Swagger
