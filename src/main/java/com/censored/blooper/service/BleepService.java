@@ -5,7 +5,6 @@ import com.censored.blooper.exceptions.ResourceNotFoundException;
 import com.censored.blooper.model.SensitiveWord;
 import com.censored.blooper.repository.SensitiveWordRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -33,7 +32,6 @@ public class BleepService {
 
     }
 
-    @Cacheable("SensitiveWord")
     public Set<String> findWords(String[] words) {
         return sensitiveWordRepository.findByBleepWordInIgnoreCase(words)
                 .stream()
