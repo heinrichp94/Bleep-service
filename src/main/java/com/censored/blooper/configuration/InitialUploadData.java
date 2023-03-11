@@ -28,7 +28,7 @@ public class InitialUploadData {
         ObjectMapper mapper = new ObjectMapper();
         TypeReference<List<String>> typeReference = new TypeReference<>() {
         };
-        InputStream inputStream = TypeReference.class.getResourceAsStream("/json/SensitiveWords.json");
+        InputStream inputStream = TypeReference.class.getResourceAsStream("/data/json/SensitiveWords.json");
         try {
             List<String> words = mapper.readValue(inputStream, typeReference);
             Set<SensitiveWord> sensitiveWordSet = new HashSet<>();
