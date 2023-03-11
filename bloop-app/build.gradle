@@ -1,0 +1,19 @@
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'com.microsoft.sqlserver:mssql-jdbc:11.2.0.jre11'
+// Gradle
+    implementation 'com.h2database:h2:1.4.200'
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+
+    implementation project(':multi-tenant-adapter')
+
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
