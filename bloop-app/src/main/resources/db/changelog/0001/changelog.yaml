@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: classpath:db/changelog/0001/create_sesitive_word_table.sql
+  - include:
+      file: classpath:db/changelog/0001/insert_data.sql
