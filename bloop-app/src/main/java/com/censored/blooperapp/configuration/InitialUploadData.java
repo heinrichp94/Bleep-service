@@ -22,28 +22,28 @@ import java.util.Set;
 public class InitialUploadData {
     private final BleepService bleepService;
 
-    @PostConstruct
-    public void Init() {
-        if (!bleepService.findAllBleeps().isEmpty()) return;
-        log.debug("Uploading bad words init");
-        ObjectMapper mapper = new ObjectMapper();
-        TypeReference<List<String>> typeReference = new TypeReference<>() {
-        };
-        InputStream inputStream = TypeReference.class.getResourceAsStream("/data/json/SensitiveWords.json");
-        try {
-            List<String> words = mapper.readValue(inputStream, typeReference);
-            Set<SensitiveWord> sensitiveWordSet = new HashSet<>();
-            for (String word : words) {
-                String[] wordsInSentence = word.split("\\s+");
-                for (String s : wordsInSentence) {//I saw the 'SELECT * FROM' too late 😅
-                    sensitiveWordSet.add(new SensitiveWord(s));
-                }
-            }
-            bleepService.saveList(sensitiveWordSet);
-            System.out.println("Words Saved!");
-        } catch (IOException e) {
-            System.out.println("Unable to save Words: " + e.getMessage());
-        }
-    }
+//    @PostConstruct
+//    public void Init() {
+//        if (!bleepService.findAllBleeps().isEmpty()) return;
+//        log.debug("Uploading bad words init");
+//        ObjectMapper mapper = new ObjectMapper();
+//        TypeReference<List<String>> typeReference = new TypeReference<>() {
+//        };
+//        InputStream inputStream = TypeReference.class.getResourceAsStream("/data/json/SensitiveWords.json");
+//        try {
+//            List<String> words = mapper.readValue(inputStream, typeReference);
+//            Set<SensitiveWord> sensitiveWordSet = new HashSet<>();
+//            for (String word : words) {
+//                String[] wordsInSentence = word.split("\\s+");
+//                for (String s : wordsInSentence) {//I saw the 'SELECT * FROM' too late 😅
+//                    sensitiveWordSet.add(new SensitiveWord(s));
+//                }
+//            }
+//            bleepService.saveList(sensitiveWordSet);
+//            System.out.println("Words Saved!");
+//        } catch (IOException e) {
+//            System.out.println("Unable to save Words: " + e.getMessage());
+//        }
+//    }
 
 }

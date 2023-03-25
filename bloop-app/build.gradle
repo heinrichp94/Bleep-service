@@ -1,19 +1,22 @@
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    //databases
     implementation 'com.microsoft.sqlserver:mssql-jdbc:11.2.0.jre11'
-// Gradle
     implementation 'com.h2database:h2:1.4.200'
     runtimeOnly 'org.postgresql:postgresql'
+    //liquibase
+    implementation 'org.liquibase:liquibase-core:4.8.0'
+//    implementation 'org.liquibase:liquibase-maven-plugin:4.8.0'
+    //swagger
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
-
+    //modules
     implementation project(':multi-tenant-adapter')
-
-
+    //lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    //tets
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
